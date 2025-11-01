@@ -12,16 +12,14 @@ if __name__ == '__main__':
     
     legend = ['Grynffindor', 'Hufflepuff', 'Ravenclaw', 'Slytherin']
     NUM_BINS = 20
-    
-    # 寮の列（インデックス1）をあらかじめ取得しておく
+
     houses_col = data[:, 1]
 
-    # 13個のヒストグラムを5x3のグリッドで表示（より縦長で見やすく）
     fig, axes = plt.subplots(5, 3, figsize=(18, 24))
-    axes = axes.flatten()  # 2D配列を1D配列に変換
+    axes = axes.flatten()
     
-    for idx, i in enumerate(range(6, 19)): # 6から18までループ
-        plt.sca(axes[idx])  # 現在のサブプロットを設定
+    for idx, i in enumerate(range(6, 19)):
+        plt.sca(axes[idx])
 
         scores_col = data[:, i]
         
@@ -33,7 +31,6 @@ if __name__ == '__main__':
         
         title = headers[i]
         
-        # 2列に絞ったデータを渡す
         overlay_histgram(
             data_for_hist,  # [寮, 点数] の配列
             legend=legend,
@@ -44,9 +41,8 @@ if __name__ == '__main__':
             range=(current_min, current_max)
         )
     
-    # 使わないサブプロットを非表示
     for idx in range(13, 15):
         axes[idx].axis('off')
     
-    plt.tight_layout(pad=3.0)  # サブプロット間の余白を増やす
+    plt.tight_layout(pad=3.0)
     plt.show()

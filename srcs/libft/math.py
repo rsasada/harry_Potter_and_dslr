@@ -68,9 +68,22 @@ def ft_percentage(X, percent):
 
 def ft_pearson_correlation(X, Y):
 	
+	if len(X) != len(Y):
+		return 0
+	
 	x_mean = ft_mean(X)
 	y_mean = ft_mean(Y)
+	x_std = ft_std(X)
+	y_std = ft_std(Y)
+	sum = 0
+	nan_count = 0
 
+	for i, x in element(X):
+		if np.isnan(x) or np.isnan(Y[i]):
+			nan_count += 1
+			continue
+		diff_x = x - x_mean
+		deff_y = Y[i] - x_mean
+		sum += diff_x * diff_y
 	
-
-	pass
+	return (sum / (i - nan_count)) / (x_std * y_std)
