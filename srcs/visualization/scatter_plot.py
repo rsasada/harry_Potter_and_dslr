@@ -13,7 +13,7 @@ def find_most_similar_features(X):
     for i in range(features_count):
 
         for k in range(i + 1, features_count):
-            tmp_corr = ft_pearson_correlation(dataset[i], dataset[k])
+            tmp_corr = ft_pearson_correlation(dataset[:, i], dataset[:, k])
             if (highest_corr <= 1 and highest_corr < tmp_corr)
                 feature_pair[0] = featrues_col[i]
                 feature_pair[1] = featrues_col[k]
