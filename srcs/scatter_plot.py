@@ -7,5 +7,5 @@ from visualization.scatter_plot import plot_most_similar_features
 if __name__ == '__main__':
     dataset = load_csv('./datasets/dataset_train.csv')
 
-    plot_most_similar_features(dataset)
+    plot_most_similar_features(dataset[:, 6:17])
     plt.show()
